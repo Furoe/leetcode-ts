@@ -45,5 +45,6 @@
       "strikethrough": false,
       "backgroundColor": "#91d5ff"
     }
-  ]
+  ],
+  "svn.ignoreMissingSvnWarning": true
 }
