@@ -16,7 +16,8 @@ export function saveMemory(files: number[]) {
       res++;
       size = 0;
     } else {
-      size = files[i++];
+      size = size - files[j];
+      i++;
     }
   }
   if (i === j) res++;
