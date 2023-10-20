@@ -1,15 +1,12 @@
 export function topIncome(arr: number[][]) {
   const len = arr.length;
-  let stack = [0];
-  let relArr = [];
+  arr.sort((a, b) => b[1] - a[1]);
+  const agent = {};
   for (let i = 0; i < len; i++) {
-    stack[arr[i][0]] = arr[i][2];
-    relArr[arr[i][0]] = arr[i][1];
+    let [seq, p_seq, money] = arr[i];
+    if (agent[seq]) money += agent[seq];
+    if (!agent[p_seq]) agent[p_seq] = 0;
+    agent[p_seq] += Math.floor(money / 100) * 15;
   }
-  let j = len;
-  while (j > 0) {
-    stack[relArr[j]] += Math.floor(stack[j] / 100) * 15;
-    j--;
-  }
-  return stack[0];
+  return agent[arr[len - 1][1]];
 }
